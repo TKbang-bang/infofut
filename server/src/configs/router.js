@@ -25,15 +25,15 @@ router.get("/info", (req, res) => {
     db.query(rqClubs, [id], (clErr, clubWin) => {
       if (clErr) return res.json(clErr);
       const slrq =
-        "SELECT (SELECT comp_name FROM competitions WHERE comp_id = seleccion_win.comp_id) AS competition, year, seleccion FROM seleccion_win WHERE player_id = ? ORDER BY year";
+        "SELECT (SELECT comp_name FROM competitions WHERE comp_id = selection_win.comp_id) AS competition, year, selection FROM selection_win WHERE player_id = ? ORDER BY year";
       db.query(slrq, [id], (errsl, selcWin) => {
         if (errsl) return res.json({ errsl });
         const solorq =
-          "SELECT (SELECT trof_name FROM trofeo_solitario WHERE trof_id = solo_win.trof_id) AS premio, year FROM solo_win WHERE player_id = ? ORDER BY year";
+          "SELECT (SELECT trof_name FROM solo_trophies WHERE trof_id = solo_win.trof_id) AS premio, year FROM solo_win WHERE player_id = ? ORDER BY year";
 
         db.query(solorq, [id], (errsl, soloWin) => {
           if (errsl) return res.json({ errsl });
-          const biorq = "SELECT * FROM biografias WHERE bio_id = ?";
+          const biorq = "SELECT * FROM biography WHERE bio_id = ?";
           db.query(biorq, [id], (errbio, bio) => {
             if (errbio) return res.json(errbio);
             res.json({ player, clubWin, selcWin, soloWin, bio });
