@@ -1,5 +1,5 @@
-CREATE DATABASE IF NOT EXISTS players2_db;
-USE players2_db;
+-- CREATE DATABASE IF NOT EXISTS players2_db;
+-- USE players2_db;
 
 DROP TABLE IF EXISTS players;
 DROP TABLE IF EXISTS biography;
