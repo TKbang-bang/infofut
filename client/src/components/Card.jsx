@@ -9,7 +9,7 @@ function Card({ player }) {
 
   const handleClick = async () => {
     try {
-      axios.post(`${URL}/putid`, { playerId });
+      await axios.post(`${URL}/putid`, { playerId });
     } catch (error) {
       console.log(error);
     }
