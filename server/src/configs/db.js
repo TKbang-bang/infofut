@@ -1,4 +1,4 @@
-const mysql = require("mysql2");
+const { createConnection } = require("mysql2");
 const {
   DB_USER,
   DB_PASSWORD,
@@ -7,7 +7,7 @@ const {
   DB_PORT,
 } = require("./configs.js");
 
-const db = mysql.createConnection({
+const db = createConnection({
   host: DB_HOST,
   user: DB_USER,
   port: DB_PORT,

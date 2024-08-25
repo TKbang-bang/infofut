@@ -704,10 +704,9 @@ body {
     justify-content: space-between;
   }
 
-  /* .header nav ul a{
-    display: block;
-    width: 100%;
-  } */
+  .header nav ul a{
+    font-size: .9rem;
+  }
 
   .home .welcome .ms{
     display: flex;

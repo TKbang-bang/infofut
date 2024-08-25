@@ -1,7 +1,12 @@
 const express = require("express");
 const router = express.Router();
 const db = require("./db.js");
+
 let id;
+
+router.post("/putid", (req, res) => {
+  id = req.body.playerId;
+});
 
 router.get("/", (req, res) => {
   const rq = "SELECT * FROM players";
@@ -9,10 +14,6 @@ router.get("/", (req, res) => {
     if (err) return res.json({ err });
     res.send(data);
   });
-});
-
-router.post("/putid", (req, res) => {
-  id = req.body.playerId;
 });
 
 router.get("/info", (req, res) => {
@@ -29,9 +30,9 @@ router.get("/info", (req, res) => {
         if (errsl) return res.json({ errsl });
         const solorq =
           "SELECT (SELECT trof_name FROM solo_trophies WHERE trof_id = solo_win.trof_id) AS premio, year FROM solo_win WHERE player_id = ? ORDER BY year";
-
         db.query(solorq, [id], (errsl, soloWin) => {
           if (errsl) return res.json({ errsl });
+
           const biorq = "SELECT * FROM biography WHERE bio_id = ?";
           db.query(biorq, [id], (errbio, bio) => {
             if (errbio) return res.json(errbio);
