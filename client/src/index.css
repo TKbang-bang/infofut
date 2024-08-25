@@ -17,61 +17,69 @@ body {
   font-optical-sizing: auto;
   font-style: normal;
   font-weight: 100;
+  background-color: #4fffb010;
+  height: 100svh;
 }
 
 .header{
+  position: absolute;
+  z-index: 6;
   display: flex;
   justify-content: space-around;
-  align-items: center;
-  color: var(--color1);
-  background-color: var(--color5);
-  height: 4rem;
   width: 100%;
-}
-
-header svg{
-  width: 1.3rem;
+  padding: 1.8rem 0;
 }
 
 .header .display .logo{
-  color: var(--color1);
-  text-decoration: none;
   font-weight: bold;
-  font-size: 2rem;
+  color: var(--color2);
+  text-decoration: none;
+  font-size: 1.8rem;
 }
 
-.header nav ul, .header nav ul li a{
+.header .display .menu{
+  display: none;
+}
+
+.header nav ul{
   display: flex;
   justify-content: center;
   align-items: center;
   list-style-type: none;
+  gap: 2rem;
 }
 
-.header .active{
-  background-color: var(--color4);
-  color: #fff;
-  height: 4rem;
-  transition: .5s ease;
-}
-
-.header nav ul{
-  gap: 1rem;
-}
-
-.header nav ul li a{
+.header nav ul a{
   text-decoration: none;
-  gap: .4rem;
-  color: inherit;
-  padding: 0 1rem;
+  color: var(--color2);
+  font-weight: bold;
+  transition: .3s ease;
+  /* border: 1px solid #000; */
 }
 
-.header .menu{
-  display: none;
+.header nav ul a:hover{
+  color: var(--color3);
+  transition: .3s ease;
 }
 
-/* .home{
-  margin-top: 4rem;
-} */
+.header .active::after{
+  content: '';
+  display: block;
+  height: 2px;
+  background-color: var(--color2);
+  transition: ease .3s;
+  animation: aft normal .3s;
+  width: 70%;
+}
+
+@keyframes aft{
+  from{
+    width: 0%;
+  }
+  to{
+    width: 70%;
+  }
+}
 
 .home .welcome{
   width: 100%;
@@ -115,20 +123,27 @@ header svg{
   padding: 5rem 0;
 }
 
-.home .allc,
-.allc{
-  box-shadow: 0px -3px 10px -3px rgba(79,255,176,0.75);
+.home .allc{
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   place-items: center;
-  padding: 5rem 0;
+  padding: 8rem 0;
   color: var(--color2);
+  background-color: #00495305;
+  /* color: rgb(0, 73, 83); */
+  box-shadow: 0px 0px 5px 0px #00495364;
 }
 
 .home .allc .card,
 .allc .card{
   box-shadow: 0px 6px 10px -2px rgba(23,177,105,0.41);
   width: 20rem;
+}
+
+.home .allc .card{
+  background-color: #fff;
+  color: var(--color5);
+  box-shadow: 0px 6px 10px -2px rgba(11, 118, 106, 0.41);
 }
 
 
@@ -161,6 +176,10 @@ header svg{
   place-items: center;
   height: 2rem;
   font-size: 1rem;
+}
+
+.home .allc .card .info a{
+  background-color: var(--color5);
 }
 
 .footer{
@@ -247,9 +266,7 @@ header svg{
   padding: 10rem 15rem;
   gap: 3rem;
   font-size: 1.3rem;
-  background-color: var(--color4);
-  color: var(--color1);
-  box-shadow: 0px -3px 10px -3px rgba(3, 104, 59, 0.75);
+  color: var(--color5);
 }
 
 .home .history p{
@@ -271,16 +288,17 @@ header svg{
   align-self: flex-start;
 }
 
-
 .allInfo, .allInfo .player{
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  width: 100%;
 }
 
 .allInfo{
   padding: 0rem 12rem 3rem;
+  color: var(--color5);
 }
 
 .allInfo .player .back{
@@ -324,9 +342,6 @@ header svg{
   text-align: justify;
   line-height: 1.5rem;
 }
-/* .allInfo .bio p{
-  text-align: justify;
-} */
 
 .allInfo>h1{
   margin: 5rem 0 2rem;
@@ -349,17 +364,13 @@ header svg{
 .allInfo .club th,
 .allInfo .sel td,
 .allInfo .sel th{
-  /* border: 1px solid #000; */
   text-align: left;
-  /* margin: 0 1rem; */
-  /* border: 1px solid #000; */
 }
 
 .allInfo .club tr,
 .allInfo .sel tr{
   display: grid;
   grid-template-columns: repeat(4,1fr);
-  /* border: 1px solid #000; */
 }
 
 .allInfo .club .uno,
@@ -376,7 +387,6 @@ header svg{
 }
 
 
-
 .buscar .buscador,
 .buscar .buscador .bsc{
   display: flex;
@@ -385,11 +395,10 @@ header svg{
 }
 
 .buscar .buscador{
+  padding: 10rem 0 5rem;
   flex-direction: column;
-  padding: 3rem 0;
   gap: 6rem;
-  color: var(--color5);
-  /* box-shadow: 0px 6px 10px -2px rgba(5, 57, 33, 0.309); */
+  color: var(--color2);
 }
 
 .buscar .buscador h1{
@@ -412,7 +421,7 @@ header svg{
   outline: none;
   color: var(--color5);
   border-radius: 5rem 0 0 5rem;
-  border: 2px solid var(--color5);
+  border: 2px solid var(--color2);
 }
 
 .buscar .buscador .bsc input::placeholder{
@@ -420,20 +429,23 @@ header svg{
 }
 
 .buscar .buscador .bsc button{
-  width: 10%;
   height: 100%;
   border: none;
-  background-color: var(--color5);
-  display: grid;
-  place-items: center;
-  padding: .5rem;
+  background-color: var(--color2);
+  padding: .5rem .8rem .5rem .3rem;
   cursor: pointer;
   border-radius: 0 5rem 5rem 0;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
 }
 
-.buscar .buscador .bsc button svg{
-  width: 100%;
-  height: 100%;
+.buscar .allc{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  place-items: center;
+  padding: 5rem 0;
+  color: var(--color2);
 }
 
 .buscar .no{
@@ -451,14 +463,13 @@ header svg{
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10rem 0;
+  padding: 15rem 0 10rem;
   gap: 10rem;
 }
 
 .contact a{
   display: block;
   padding: 2rem;
-  /* border: 1px solid #000; */
   border-radius: 1rem;
   transition: .5s ease;
 }
@@ -479,7 +490,8 @@ header svg{
 }
 
 .about{
-  padding: 5rem 20rem;
+  padding: 10rem 20rem 5rem;
+  color: var(--color5);
 }
 
 .about p{
@@ -495,4 +507,374 @@ header svg{
 
 .about .cr{
   margin-top: 3rem;
+}
+
+
+/* RESPONSIVE */
+
+
+@media screen and (min-width: 768px) and (max-width: 990px) {
+  /* body{
+    background-color: red;
+  } */
+
+  .home .allc{
+    grid-template-columns: repeat(2, 1fr);
+    padding: 6rem 3rem;
+    gap: 2rem;
+  }
+
+  .home .allc .card img{
+    width: 100%;
+    height: 15rem;
+  }
+
+  .home .history{
+    padding: 5rem 3rem;
+  }
+
+  .footer{
+    width: 100%;
+    padding: 5rem 8rem;
+  }
+
+  .footer .dos p svg{
+    margin-right: .5rem;
+    width: 1rem;
+  }
+
+  .footer .dos a{
+    text-wrap: nowrap;
+  }
+
+  .buscar, .buscar .buscador{
+    padding: 0;
+    width: 100%;
+  }
+
+  .buscar{
+    padding: 0 3rem;
+  }
+
+  .buscar .buscador{
+    padding: 10rem 0 3rem;
+  }
+
+  .buscar .buscador .bsc{
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: none;
+    width: 100%;
+    border-radius: 0;
+    overflow: auto;
+    gap: 1rem;
+    height: auto;
+  }
+
+  .buscar .buscador .bsc input{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--color2);
+    border-radius: 0;
+    height: 2.8rem;
+    background-color: #0049530e;
+    transition: ease .3s;
+  }
+
+  .buscar .buscador .bsc input:focus{
+    border: 1px solid var(--color2);
+    border-radius: .5rem;
+    transition: ease .3s;
+  }
+
+  .buscar .buscador .bsc button{
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .buscar .allc{
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+
+  .buscar .allc .card{
+    width: 100%;
+    height: 100%;
+  }
+
+  .buscar .allc .card img{
+    width: 100%;
+    height: 15rem;
+  }
+
+  .contact{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 4rem;
+    padding: 15rem 3rem 5rem;
+    place-items: center;
+  }
+
+  .contact a{
+    display: block;
+    border-radius: 1rem;
+    transition: .5s ease;
+    padding: 4rem;
+  }
+  
+  .contact .f{
+    box-shadow: 0px 6px 7px -1px rgba(59,89,152,1);
+  }
+  .contact .i{
+    box-shadow: 0px 6px 7px -1px rgba(214,17,70,1);
+  }
+  .contact .w{
+    box-shadow: 0px 6px 7px -1px rgba(37,211,102,1);
+  }
+
+  .about{
+    padding: 10rem 4rem;
+  }
+
+  .allInfo{
+    padding: 0;
+    width: 100%;
+  }
+
+  .allInfo .player img{
+    height: 30rem;
+  }
+
+  .allInfo .club,
+  .allInfo .sel,
+  .allInfo .solo,
+  .allInfo .bio{
+    width: 100%;
+    padding: 0 4rem;
+  }
+
+  .allInfo table tr{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .5rem;
+    margin-top: .5rem;
+  }
+
+  .allInfo table tr .uno{
+    grid-column: 1/3;
+  }
+
+  .allInfo .solo tr .uno{
+    grid-column: 1/4;
+  }
+}
+
+
+
+
+
+@media screen and (max-width: 767px) {
+  /* body{
+    background-color: red;
+  } */
+
+  .header{
+    width: 100%;
+    flex-direction: column;
+    padding: 0;
+    gap: 0;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: .5rem;
+  }
+  .header .display{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+    justify-self: flex-start;
+  }
+
+  .header nav ul{
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  /* .header nav ul a{
+    display: block;
+    width: 100%;
+  } */
+
+  .home .welcome .ms{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    padding: 5rem 1rem;
+    gap: 2rem;
+  }
+
+  .home .allc{
+    grid-template-columns: repeat(1, 1fr);
+    padding: 6rem 2rem;
+    gap: 4rem;
+  }
+
+  .home .allc .card{
+    width: 100%;
+    height: 100%;
+  }
+
+  .home .allc .card img{
+    width: 100%;
+    height: 15rem;
+  }
+
+  .home .history{
+    padding: 5rem 2rem;
+  }
+
+  .home .history h1{
+    font-size: 2.5rem;
+  }
+
+  .footer{
+    width: 100%;
+    padding: 5rem 2rem;
+  }
+
+  .footer .dos p svg{
+    margin-right: .5rem;
+    width: 1rem;
+  }
+
+  .footer .dos a{
+    text-wrap: nowrap;
+  }
+
+  .buscar, .buscar .buscador{
+    padding: 0;
+    width: 100%;
+  }
+
+  .buscar{
+    padding: 0 2rem;
+  }
+
+  .buscar .buscador{
+    padding: 10rem 0 3rem;
+  }
+
+  .buscar .buscador .bsc{
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: none;
+    width: 100%;
+    border-radius: 0;
+    overflow: auto;
+    gap: 1rem;
+    height: auto;
+  }
+
+  .buscar .buscador .bsc input{
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid var(--color2);
+    border-radius: 0;
+    height: 2.8rem;
+    background-color: #0049530e;
+    transition: ease .3s;
+  }
+
+  .buscar .buscador .bsc input:focus{
+    border: 1px solid var(--color2);
+    border-radius: .5rem;
+    transition: ease .3s;
+  }
+
+  .buscar .buscador .bsc button{
+    width: 100%;
+    border-radius: 0;
+  }
+
+  .buscar .allc{
+    grid-template-columns: repeat(1, 1fr);
+    gap: 4rem;
+  }
+
+  .buscar .allc .card{
+    width: 100%;
+    height: 100%;
+  }
+
+  .buscar .allc .card img{
+    width: 100%;
+    height: 15rem;
+  }
+
+  .contact{
+    flex-direction: column;
+    gap: 4rem;
+  }
+
+  .contact a{
+    display: block;
+    padding: 2rem;
+    border-radius: 1rem;
+    transition: .5s ease;
+  }
+  
+  .contact .f{
+    box-shadow: 0px 6px 7px -1px rgba(59,89,152,1);
+  }
+  .contact .i{
+    box-shadow: 0px 6px 7px -1px rgba(214,17,70,1);
+  }
+  .contact .w{
+    box-shadow: 0px 6px 7px -1px rgba(37,211,102,1);
+  }
+
+  .about{
+    padding: 10rem 2rem;
+  }
+
+  .allInfo{
+    padding: 0;
+    width: 100%;
+  }
+
+  .allInfo .player img{
+    height: 30rem;
+  }
+
+  .allInfo .club,
+  .allInfo .sel,
+  .allInfo .solo,
+  .allInfo .bio{
+    width: 100%;
+    padding: 0 2rem;
+  }
+
+  .allInfo table tr{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: .5rem;
+    margin-top: .5rem;
+  }
+
+  .allInfo table tr .uno{
+    grid-column: 1/3;
+  }
+
+  .allInfo .solo tr .uno{
+    grid-column: 1/4;
+  }  
 }

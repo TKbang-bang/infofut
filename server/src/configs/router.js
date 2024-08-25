@@ -19,7 +19,6 @@ router.get("/info", (req, res) => {
   const rq = "SELECT * FROM players WHERE player_id = ?";
   db.query(rq, [id], (err, player) => {
     if (err) return res.json({ err });
-    // req.params.player = player.player_name;
     const rqClubs =
       "SELECT (SELECT comp_name FROM competitions WHERE comp_id = club_win.comp_id) AS competition,year, team FROM club_win WHERE player_id = ? ORDER BY year";
     db.query(rqClubs, [id], (clErr, clubWin) => {

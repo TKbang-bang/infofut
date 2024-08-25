@@ -1,10 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import FacebookIcon from "../svg/FacebookIcon";
 import { Link } from "react-router-dom";
 import InstaIcon from "../svg/InstaIcon";
 import WhatIcon from "../svg/WhatIcon";
 
 function Contacts() {
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
   return (
     <div className="contact">
       <Link

@@ -8,6 +8,8 @@ import Search from "./pages/Search";
 import Contacts from "./pages/Contacts";
 import About from "./pages/About";
 
+const URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+
 function App() {
   return (
     <>

@@ -17,7 +17,7 @@ function Selection({ sel }) {
             <tr key={crypto.randomUUID()}>
               <td className="uno">{cl.competition}</td>
               <td>{cl.year}</td>
-              <td>{cl.seleccion}</td>
+              <td>{cl.selection}</td>
             </tr>
           );
         })}

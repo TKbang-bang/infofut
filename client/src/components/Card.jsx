@@ -2,12 +2,14 @@ import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
 
+const URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
+
 function Card({ player }) {
   const playerId = player.player_id;
 
   const handleClick = async () => {
     try {
-      axios.post("http://localhost:3000/putid", { playerId });
+      axios.post(`${URL}/putid`, { playerId });
     } catch (error) {
       console.log(error);
     }
@@ -15,10 +17,7 @@ function Card({ player }) {
 
   return (
     <div className="card">
-      <img
-        src={"http://localhost:3000/gallery/profiles/" + player.img1}
-        alt=""
-      />
+      <img src={`${URL}/gallery/profiles/${player.img1}`} alt="" />
       <div className="info">
         <h3>{player.name}</h3>
         <p>{player.age}</p>

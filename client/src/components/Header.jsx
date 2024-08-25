@@ -1,9 +1,5 @@
 import React from "react";
 import { NavLink, Link } from "react-router-dom";
-import Homeicon from "../svg/Homeicon";
-import Searchicon from "../svg/Searchicon";
-import Phoneicon from "../svg/Phoneicon";
-import Infoicon from "../svg/Infoicon";
 
 function Header() {
   return (
@@ -12,33 +8,20 @@ function Header() {
         <Link to={"/"} className="logo">
           InfoFut
         </Link>
-        <div className="menu"></div>
       </div>
       <nav>
         <ul>
           <li>
-            <NavLink to={"/"}>
-              <Homeicon></Homeicon>
-              <p>Inicio</p>
-            </NavLink>
+            <NavLink to={"/"}>Inicio</NavLink>
           </li>
           <li>
-            <NavLink to={"/search"}>
-              <Searchicon cl={"#4FFFB0"} />
-              <p>Buscar</p>
-            </NavLink>
+            <NavLink to={"/search"}>Buscar</NavLink>
           </li>
           <li>
-            <NavLink to={"/contact"}>
-              <Phoneicon></Phoneicon>
-              <p>Contacto</p>
-            </NavLink>
+            <NavLink to={"/contact"}>Contacto</NavLink>
           </li>
           <li>
-            <NavLink to={"/about"}>
-              <Infoicon></Infoicon>
-              <p>Sobre la página</p>
-            </NavLink>
+            <NavLink to={"/about"}>Sobre la página</NavLink>
           </li>
         </ul>
       </nav>

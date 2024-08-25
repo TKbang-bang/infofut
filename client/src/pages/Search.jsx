@@ -1,7 +1,5 @@
-import React, { useState } from "react";
-import Searchicon from "../svg/Searchicon";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
 import Card from "../components/Card";
 
 function Search() {
@@ -9,6 +7,10 @@ function Search() {
   const [txt, setTxt] = useState("");
   const [players, setPlayers] = useState([]);
   const [find, setFind] = useState(false);
+
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -64,9 +66,7 @@ function Search() {
             onChange={(e) => setTxt(e.target.value)}
             placeholder="Busca un jugador.."
           />
-          <button type="submit">
-            <Searchicon cl={"#4FFFB0"} />
-          </button>
+          <button type="submit">Buscar</button>
         </form>
       </div>
       {searched ? (

@@ -1,7 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 function About() {
+  useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
   return (
     <div className="about">
       <h1>Sobre esta página</h1>
@@ -20,6 +24,17 @@ function About() {
         Se ha hecho el mayor esfuerzo para trarele buenas y completas
         informaciones sobre los pocos jugadores que se muestran en esta página a
         los usuarios que han visitado esta página web. Por favor disfrute
+      </p>
+      <p>
+        El segundo propósito de esta página es de probar la capacidad de la
+        lógica en programación de su creador con los lenguajes de programación,
+        (<span>HTML</span>, <span>Css</span>, <span>Javscript</span>,{" "}
+        <span>Node js</span>, <span>React</span>, <span>MySql</span>). Si se vea
+        o se ha percibido algún error en la página web se le puede notificar al
+        creador{" "}
+        <Link target="_blank" to={"https://www.instagram.com/tk_woodley/"}>
+          Woodley TK
+        </Link>
       </p>
 
       <h1 className="cr">Creador de la Página Web</h1>

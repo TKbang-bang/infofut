@@ -16,17 +16,17 @@ function Footer() {
         <div className="n">
           <h3>Atajos</h3>
           <div>
-            <Link>Inicio</Link>
-            <Link>Buscar</Link>
-            <Link>Contacto</Link>
-            <Link>Sobre la página</Link>
+            <Link to={"/"}>Inicio</Link>
+            <Link to={"/search"}>Buscar</Link>
+            <Link to={"/contact"}>Contacto</Link>
+            <Link to={"/about"}>Sobre la página</Link>
           </div>
         </div>
       </div>
       <hr />
       <div className="dos">
-        <Copyright />
         <p>
+          <Copyright />
           Esta página fue programada por{" "}
           <Link target="_blank" to={"https://www.instagram.com/tk_woodley/"}>
             Woodley TK

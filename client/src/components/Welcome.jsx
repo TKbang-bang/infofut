@@ -13,7 +13,6 @@ function Welcome() {
     <div className="welcome">
       <div className="slider">
         <img src={`img${numb}.jpg`} className="img show" />
-        {console.log(numb)}
       </div>
       <div className="ms">
         <h1>Bienvenido a mi Página Web</h1>
