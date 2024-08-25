@@ -14,6 +14,10 @@ function Info() {
   const [sel, setSel] = useState([]);
   const [solo, setSolo] = useState([]);
 
+  let ss = setTimeout(() => {
+    console.log("time");
+  }, 500);
+
   useEffect(() => {
     window.scroll(0, 0);
     const getAllData = async () => {
@@ -25,7 +29,7 @@ function Info() {
       setSolo(dt.data.soloWin);
     };
     getAllData();
-  }, []);
+  }, [ss]);
 
   return (
     <div className="allInfo">

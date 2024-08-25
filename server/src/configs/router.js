@@ -36,7 +36,9 @@ router.get("/info", (req, res) => {
           const biorq = "SELECT * FROM biography WHERE bio_id = ?";
           db.query(biorq, [id], (errbio, bio) => {
             if (errbio) return res.json(errbio);
-            res.json({ player, clubWin, selcWin, soloWin, bio });
+            setTimeout(() => {
+              res.json({ player, clubWin, selcWin, soloWin, bio });
+            }, 500);
           });
         });
       });
