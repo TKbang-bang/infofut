@@ -32,13 +32,10 @@ router.get("/info", (req, res) => {
           "SELECT (SELECT trof_name FROM solo_trophies WHERE trof_id = solo_win.trof_id) AS premio, year FROM solo_win WHERE player_id = ? ORDER BY year";
         db.query(solorq, [id], (errsl, soloWin) => {
           if (errsl) return res.json({ errsl });
-
           const biorq = "SELECT * FROM biography WHERE bio_id = ?";
           db.query(biorq, [id], (errbio, bio) => {
             if (errbio) return res.json(errbio);
-            setTimeout(() => {
-              res.json({ player, clubWin, selcWin, soloWin, bio });
-            }, 500);
+            res.json({ player, clubWin, selcWin, soloWin, bio });
           });
         });
       });

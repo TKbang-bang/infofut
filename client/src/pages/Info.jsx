@@ -33,31 +33,25 @@ function Info() {
 
   return (
     <div className="allInfo">
-      {setTimeout(() => {
-        return (
-          <>
-            <div className="player">
-              <img src={`${URL}/gallery/extra/${player.img2}`} alt="" />
-              <button onClick={() => history.back()} className="back">
-                <BackIcon fl={"#fff"} />
-                <p>Regresar</p>
-              </button>
-              <h3>{player.name}</h3>
-              <p>{player.country}</p>
-              <p>{player.age}</p>
-              <p>{player.current_team}</p>
-            </div>
-            <h1>Trofeos</h1>
-            <Clubs club={club} />
-            <Selection sel={sel} />
-            <Solo solo={solo} />
-            <div className="bio">
-              <h3>Biografía corta</h3>
-              <p className="biop">{bio}</p>
-            </div>
-          </>
-        );
-      }, 500)}
+      <div className="player">
+        <img src={`${URL}/gallery/extra/${player.img2}`} alt="" />
+        <button onClick={() => history.back()} className="back">
+          <BackIcon fl={"#fff"} />
+          <p>Regresar</p>
+        </button>
+        <h3>{player.name}</h3>
+        <p>{player.country}</p>
+        <p>{player.age}</p>
+        <p>{player.current_team}</p>
+      </div>
+      <h1>Trofeos</h1>
+      <Clubs club={club} />
+      <Selection sel={sel} />
+      <Solo solo={solo} />
+      <div className="bio">
+        <h3>Biografía corta</h3>
+        <p className="biop">{bio}</p>
+      </div>
     </div>
   );
 }
