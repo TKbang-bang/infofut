@@ -17,7 +17,11 @@ function Card({ player }) {
 
   return (
     <div className="card">
-      <img src={`${URL}/gallery/profiles/${player.img1}`} alt="" />
+      <img
+        loading="lazy"
+        src={`${URL}/gallery/profiles/${player.img1}`}
+        alt=""
+      />
       <div className="info">
         <h3>{player.name}</h3>
         <p>{player.age}</p>

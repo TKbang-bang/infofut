@@ -12,7 +12,7 @@ function Welcome() {
   return (
     <div className="welcome">
       <div className="slider">
-        <img src={`img${numb}.jpg`} className="img show" />
+        <img loading="lazy" src={`img${numb}.jpg`} className="img show" />
       </div>
       <div className="ms">
         <h1>Bienvenido a mi Página Web</h1>

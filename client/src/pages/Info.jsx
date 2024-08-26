@@ -14,10 +14,6 @@ function Info() {
   const [sel, setSel] = useState([]);
   const [solo, setSolo] = useState([]);
 
-  let ss = setTimeout(() => {
-    console.log("time");
-  }, 500);
-
   useEffect(() => {
     window.scroll(0, 0);
     const getAllData = async () => {
@@ -29,12 +25,16 @@ function Info() {
       setSolo(dt.data.soloWin);
     };
     getAllData();
-  }, [ss]);
+  }, []);
 
   return (
     <div className="allInfo">
       <div className="player">
-        <img src={`${URL}/gallery/extra/${player.img2}`} alt="" />
+        <img
+          loading="lazy"
+          src={`${URL}/gallery/extra/${player.img2}`}
+          alt=""
+        />
         <button onClick={() => history.back()} className="back">
           <BackIcon fl={"#fff"} />
           <p>Regresar</p>

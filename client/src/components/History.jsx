@@ -6,7 +6,7 @@ function History() {
       <h1>Histora del Fútbol</h1>
       <div className="b">
         <h3>Creador del Fútbol</h3>
-        <img src="creador.png" alt="" />
+        <img loading="lazy" src="creador.png" alt="" />
         <p>Ebenezer Morley</p>
         <div className="bc">
           <h3>Bigrafía corta</h3>
