@@ -2,12 +2,6 @@ const express = require("express");
 const router = express.Router();
 const db = require("./db.js");
 
-let id;
-
-router.post("/putid", (req, res) => {
-  id = req.body.playerId;
-});
-
 router.get("/", (req, res) => {
   const rq = "SELECT * FROM players";
   db.query(rq, (err, data) => {
@@ -16,10 +10,11 @@ router.get("/", (req, res) => {
   });
 });
 
-router.get("/info", (req, res) => {
-  const rq = "SELECT * FROM players WHERE player_id = ?";
-  db.query(rq, [id], (err, player) => {
+router.post("/info/:name", (req, res) => {
+  const rq = "SELECT * FROM players WHERE name = ?";
+  db.query(rq, [req.params.name], (err, player) => {
     if (err) return res.json({ err });
+    const id = player[0].player_id;
     const rqClubs =
       "SELECT (SELECT comp_name FROM competitions WHERE comp_id = club_win.comp_id) AS competition,year, team FROM club_win WHERE player_id = ? ORDER BY year";
     db.query(rqClubs, [id], (clErr, clubWin) => {
@@ -36,6 +31,7 @@ router.get("/info", (req, res) => {
           db.query(biorq, [id], (errbio, bio) => {
             if (errbio) return res.json(errbio);
             res.json({ player, clubWin, selcWin, soloWin, bio });
+            // console.log({ player, clubWin, selcWin, soloWin, bio });
           });
         });
       });
@@ -43,11 +39,16 @@ router.get("/info", (req, res) => {
   });
 });
 
-router.get("/search", (req, res) => {
-  const rq = "SELECT * FROM players";
-  db.query(rq, (err, data) => {
+router.post("/search", (req, res) => {
+  const { txt } = req.body;
+  const rq = "SELECT * FROM players WHERE name like ?";
+  db.query(rq, [`%${txt}%`], (err, data) => {
     if (err) return res.json({ err });
-    res.send(data);
+    if (data.length > 0) {
+      res.json({ ok: true, data });
+    } else {
+      res.json({ ok: false, message: "No se encontró el jugador" });
+    }
   });
 });
 

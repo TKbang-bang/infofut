@@ -4,6 +4,7 @@ import Clubs from "../components/Clubs";
 import Selection from "../components/Selection";
 import Solo from "../components/Solo";
 import BackIcon from "../svg/BackIcon";
+import { useParams } from "react-router-dom";
 
 const URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:3000";
 
@@ -13,11 +14,12 @@ function Info() {
   const [club, setClub] = useState([]);
   const [sel, setSel] = useState([]);
   const [solo, setSolo] = useState([]);
+  const { name } = useParams();
 
   useEffect(() => {
     window.scroll(0, 0);
     const getAllData = async () => {
-      const dt = await axios.get(`${URL}/info`);
+      const dt = await axios.post(`${URL}/info/${name}`);
       setPlayer(dt.data.player[0]);
       setBio(dt.data.bio[0].bio);
       setClub(dt.data.clubWin);

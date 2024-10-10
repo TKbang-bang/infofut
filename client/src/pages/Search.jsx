@@ -7,6 +7,7 @@ function Search() {
   const [txt, setTxt] = useState("");
   const [players, setPlayers] = useState([]);
   const [find, setFind] = useState(false);
+  const [ms, setMs] = useState("");
 
   useEffect(() => {
     window.scroll(0, 0);
@@ -22,16 +23,14 @@ function Search() {
         setPlayers([]);
         setFind(false);
         try {
-          const dt = await axios.get("http://localhost:3000/search");
-          let temp = [];
-          dt.data.map((d) => {
-            if (d.name.toLocaleLowerCase().includes(txt.toLocaleLowerCase())) {
-              setFind(true);
-              temp.unshift(d);
-              setPlayers([...temp]);
-              console.log(d);
-            }
-          });
+          const dt = await axios.post("http://localhost:3000/search", { txt });
+          if (dt.data.ok) {
+            setFind(true);
+            setPlayers(dt.data.data);
+          } else {
+            setFind(false);
+            setMs(dt.data.message);
+          }
           // console.log({ players, find });
         } catch (error) {
           console.log(error);
@@ -50,7 +49,7 @@ function Search() {
       </div>
     ) : (
       <div className="no">
-        <h1>No se encontro el jugador</h1>
+        <h1>{ms}</h1>
       </div>
     );
   };
