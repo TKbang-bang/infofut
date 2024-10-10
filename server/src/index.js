@@ -10,4 +10,4 @@ app.use(express.json());
 app.use(cors());
 app.use("/", router);
 
-app.listen(PORT, () => console.log("Server on port " + app.get("port")));
+app.listen(PORT, () => console.log("Server on port " + PORT));
